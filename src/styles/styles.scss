@@ -1,0 +1,1583 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+$orange: #f57600;
+$offwhite: #F1E8DB;
+$accent: black;
+
+$anton: "Anton", sans-serif;
+$rocksalt: "Rock Salt", cursive;
+$barlow: "Barlow", sans-serif;
+
+$xs: '0px';
+$sm: '576px';
+$md: '768px';
+$menu: '800px';
+$lg: '992px';
+$xl: '1200px';
+$xxl: '1400px';
+
+@mixin xs() {
+    @media screen and (min-width: $xs) and (max-width: 576px) {
+        @content();
+    }
+}
+@mixin sm() {
+    @media screen and (max-width: $sm) {
+        @content();
+    }
+}
+
+@mixin md() {
+    @media screen and (max-width: $md) {
+        @content();
+    }
+}
+
+@mixin menu() {
+    @media screen and (max-width: $menu) {
+        @content();
+    }
+}
+
+@mixin lg() {
+    @media screen and (max-width: $lg) {
+        @content();
+    }
+}
+
+@mixin xl() {
+    @media screen and (max-width: $xl) {
+        @content();
+    }
+}
+
+@mixin xxl() {
+    @media screen and (max-width: $xxl) {
+        @content();
+    }
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .top-button {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        z-index: 1000;
+        width: 140px;
+        height: 40px;
+        border-radius: 0;
+        border: 3px solid black;
+        font-weight: 500;
+        font-size: 18px;
+        color: black;
+        background: rgba(0,0,0,0);
+        font-family: $anton;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        letter-spacing: 1px;
+
+        @include xs {
+            display: none;
+        }
+
+        &:hover {
+            background: black;
+            color: white;
+        }
+    }
+
+    .header {
+        background: $orange;
+        padding: 2vmin;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+        min-height: 100px;
+        max-height: 100px;
+
+        @include xs {
+            padding: 1vmin;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            transform: rotate(-8deg);
+
+            h1 {
+                position: relative;
+                display: inline-block;
+                border-right: 2px solid black;
+
+                .line-one, .line-two {
+                    display: block;
+                    line-height: 0.85;
+                }
+
+                .line-one {
+                    font-size: 2.6rem;
+                    font-weight: 800;
+                    color: black;
+                    font-family: $barlow;
+                    position: absolute;
+                    right: 4px;
+
+                    @include xs {
+                        font-size: 2rem;
+                    }
+                }
+
+                .line-two {
+                    font-size: 2rem;
+                    font-family: $rocksalt;
+                    color: $offwhite;
+                    margin-top: 2.2rem;
+                    padding: 0 9px 0 0;
+                    line-height: 1;
+
+                    @include xs {
+                        font-size: 1.5rem;
+                        margin-top: 1.6rem;
+                        padding: 0 5px 0 0;
+                    }
+                }
+            }
+
+            h2 {
+                font-size: 1.3rem;
+                line-height: 0.85;
+                margin-left: 9px;
+                font-family: $barlow;
+                font-weight: 800;
+
+                @include xs {
+                    margin-left: 4px;
+                }
+            }
+        }
+
+        .menu {
+            position: relative;
+
+            .nav-menu {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                @include menu {
+                    flex-direction: column;
+                }
+
+                .nav-list {
+                    display: flex;
+                    list-style: none;
+                    font-size: 28px;
+                    font-weight: 500;
+                    font-family: $anton;
+                    color: $offwhite;
+                    letter-spacing: 1px;
+                    position: relative;
+
+                    @include menu {
+                        display: none;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100vw;
+                        height: 100vh;
+                        background: $orange;
+                        z-index: 1001;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    
+                    li {
+                        cursor: pointer;
+
+                        @include menu {
+                            &:not(:last-child) {
+                                margin-bottom: 0.5rem;
+                            }
+                        }
+
+                        &:hover {
+                            color: black;
+                        }
+                    }
+
+                    li:not(:last-child) {
+                        margin-right: 35px;
+
+                        @include menu {
+                            margin-right: 0;
+                        }
+                    }
+                }
+
+                .nav-list.open {
+                    display: flex;
+                }
+
+                .hamburger {
+                    display: none;
+                    font-size: 30px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    color: white;
+
+                    &:hover {
+                        color: black;
+                    }
+
+                    @include menu {
+                        display: block;
+                    }
+                }
+
+                .close-button {
+                    display: none;
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    font-size: 36px;
+                    color: $offwhite;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+
+                    @include menu {
+                        display: block;
+                    }
+
+                    &:hover {
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+
+    .marquee-container {
+        width: 100%;
+        height: 100px;
+        overflow: hidden;
+        position: relative;
+        background: $offwhite;
+        display: flex;
+        align-items: center;
+        border-top: 3px solid black;
+        border-bottom: 3px solid black;
+
+        .marquee-item {
+            min-width: 125px;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+            font-family: $barlow;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+    }
+
+    .hero {
+        background: $orange;
+        padding: 4vmin;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 100px);
+
+        @include md {
+            min-height: auto;
+            padding: 6vmin;
+        }
+
+        .hero-main {
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            @include md {
+                flex-direction: column;
+                justify-content: center;
+                padding: 8vmin 0 0 0;
+            }
+
+            .hero-main-text {
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                @include md {
+                    width: 100%;
+                }
+
+                h2 {
+                    font-family: $anton;
+                    font-size: 8rem;
+                    line-height: 1.03;
+                    margin-bottom: 10px;
+                    font-weight: 800;
+
+                    @include xxl {
+                        font-size: 6.8rem;
+                    }
+
+                    @include xl {
+                        font-size: 5.6rem;
+                    }
+
+                    @include lg {
+                        font-size: 4.2rem;
+                    }
+
+                    @include md {
+                        font-size: 4.6rem;
+                    }
+                }
+
+                h3 {
+                    font-family: $barlow;
+                    font-size: 2.5rem;
+                    font-weight: 600;
+                    line-height: 0.9;
+                    margin-bottom: 20px;
+                    width: 80%;
+
+                    @include xxl {
+                        font-size: 2.4rem;
+                    }
+
+                    @include xl {
+                        font-size: 2rem;
+                    }
+
+                    @include sm {
+                        font-size: 2.2rem;
+                        width: 90%;
+                    }
+
+                    @include xs {
+                        font-size: 1.8rem;
+                    }
+                }
+
+                .accent {
+                    color: $offwhite;
+                }
+
+                .contact-btn {
+                    width: 210px;
+                    height: 75px;
+                    border-radius: 0;
+                    border: 3px solid black;
+                    font-weight: 500;
+                    font-size: 28px;
+                    color: black;
+                    background: $offwhite;
+                    box-shadow: 8px 8px 0 0;
+                    position: relative;
+                    font-family: $anton;
+                    cursor: pointer;
+                    user-select: none;
+                    -webkit-user-select: none;
+                    touch-action: manipulation;
+                    letter-spacing: 1px;
+        
+                    &:hover {
+                        background: rgba(0,0,0,0);
+                    }
+
+                    &:active {
+                        box-shadow: 0px 0px 0px 0px;
+                        top: 8px;
+                        left: 8px;
+                    }
+                }
+            }
+    
+            .hero-main-img {
+                width: 40%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                padding: 25px 0;
+
+                @include md {
+                    width: 100%;
+                    margin-top: 2rem;
+                }
+
+                @include xs {
+                    margin-top: 2rem;
+                }
+
+                img {
+                    height: 120%;
+                    width: 80%;
+                    transform: rotate(5deg);
+                    object-fit: cover;
+
+                    @include lg {
+                        width: 100%;
+                    }
+
+                    @include md {
+                        width: 90%;
+                    }
+
+                    @include xs {
+                        width: 100%;
+                    }
+
+                    &:hover {
+                        transform: rotate(-5deg);
+                    }
+                }
+            }
+        }
+    }
+
+    .main {
+        .page {
+            width: 100%;
+            display: flex;
+
+            .accent {
+                color: $offwhite;
+            }
+
+            .accent-two {
+                color: $orange;
+            }
+
+            .section-title {
+                font-size: 4.4rem;
+                font-family: $anton;
+                line-height: 1;
+
+                @include md {
+                    font-size: 3.2rem;
+                }
+
+                @include xs {
+                    font-size: 2.7rem;
+                }
+            }
+        }
+
+        .info {
+            background: $offwhite;
+            display: flex;
+            flex-direction: column;
+            border-top: 3px solid black;
+
+            .section-title {
+                margin-top: 3rem;
+
+                @include xs {
+                    margin-top: 2rem;
+                }
+            }
+
+            .process-main {
+                width: 100%;
+                padding: 4vmin 4vmin 8vmin 4vmin;
+
+                @include xs {
+                    padding: 6vmin;
+                }
+
+                .sh {
+                    font-weight: 600;
+                }
+
+                p {
+                    font-size: 1.5rem;
+                    font-family: $barlow;
+                    font-weight: 600;
+
+                    @include xs {
+                        font-size: 1.4rem;
+                    }
+                }
+
+                .process-container {
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin: 3rem 0;
+
+                    @include xl {
+                        margin: 1rem 0;
+                    }
+    
+                    .process-item {
+                        width: calc(100% / 3);
+                        display: flex;
+                        flex-direction: column;
+                        padding: 15px 50px;
+
+                        @include xxl {
+                            padding: 10px 20px;
+                        }
+
+                        @include xl {
+                            width: 50%;
+                        }
+
+                        @include lg {
+                            width: 100%;
+                            padding: 20px;
+                        }
+
+                        @include xs {
+                            padding: 20px 0;
+                        }
+
+                        .process-item-header {
+                            display: flex;
+                            align-items: end;
+                            justify-content: space-between;
+                            border-bottom: 3px solid black;
+                            padding-bottom: 5px;
+
+                            h3 {
+                                font-family: $anton;
+                                font-size: 2rem;
+                                letter-spacing: 1px;
+
+                                @include xs {
+                                    font-size: 2.2rem;
+                                }
+                            }
+
+                            img {
+                                width: 80px;
+                                height: 80px;
+                            }
+                        }
+
+                        .process-item-content {
+                            padding-top: 5px;
+
+                            p {
+                                font-size: 1.5rem;
+                                text-align: justify;
+                                -webkit-hyphens: auto;
+                                -moz-hyphens: auto;
+                                hyphens: auto;
+
+                                @include xs {
+                                    font-size: 1.4rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .about-main {
+                background: $orange;
+                display: flex;
+                border-top: 3px solid black;
+
+                @include xl {
+                    flex-direction: column-reverse;
+                }
+
+                .about-img {
+                    width: 50%;
+                    display: flex;
+                    justify-content: center;
+
+                    @include xl {
+                        width: 100%;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 102%;
+                        object-fit: cover;
+                        transform: rotate(-3deg);
+                        z-index: 1000;
+
+                        @include xl {
+                            width: 70%;
+                        }
+
+                        @include md {
+                            width: 80%;
+                        }
+
+                        @include xs {
+                            width: 94%;
+                        }
+
+                        &:hover {
+                            transform: rotate(3deg);
+                        }
+                    }
+                }
+
+                .about-content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 50%;
+                    padding: 6vmin;
+                    margin: 2rem 0 0 0;
+
+                    @include xl {
+                        width: 100%;
+                        align-items: center;
+                    }
+
+                    @include xs {
+                        align-items: start;
+                    }
+
+                    .section-title {
+                        margin: 0 0 1rem 0;
+                    }
+
+                    .about-item {
+                        margin: 20px 0;
+                        text-align: justify;
+
+                        @include xl {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+
+                        @include xs {
+                            align-items: start;
+                        }
+
+                        .about-item-title {
+                            display: flex;
+                            align-items: center;
+                            font-size: 2rem;
+                            font-family: $anton;
+                            letter-spacing: 1px;
+                            text-transform: uppercase;
+
+                            @include xs {
+                                font-size: 1.8rem;
+                            }
+
+                            .about-icon {
+                                margin-right: 8px;
+                            }
+                        }
+
+                        .about-item-text {
+                            width: 80%;
+                            font-family: $barlow;
+                            font-size: 1.5rem;
+                            font-weight: 600;
+                            text-align: justify;
+                            -webkit-hyphens: auto;
+                            -moz-hyphens: auto;
+                            hyphens: auto;
+
+                            @include xl {
+                                text-align: center;
+                            }
+
+                            @include xs {
+                                width: 100%;
+                                text-align: start;
+                                font-size: 1.4rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .work {
+            background: $orange;
+            padding: 4vmin 4vmin 8vmin 4vmin;
+            border-bottom: 3px solid black;
+
+            @include xs {
+                padding: 6vmin 6vmin 8vmin 6vmin;
+            }
+
+            .work-main {
+                display: flex;
+                width: 100%;
+
+                @include xl {
+                    flex-direction: column;
+                }
+    
+                .testimonial {
+                    display: flex;
+                    align-items: end;
+                    width: 30%;
+
+                    @include xl {
+                        width: 50%;
+                        margin-top: 3rem;
+                    }
+
+                    @include lg {
+                        width: 70%;
+                    }
+
+                    @include md {
+                        width: 100%;
+                        margin-top: 2rem;
+                    }
+
+                    blockquote {
+                        font-size: 1.5rem;
+                        font-family: $barlow;
+                        font-weight: 600;
+
+                        @include xs {
+                            font-size: 1.4rem;
+                        }
+
+                        p {
+                            margin-bottom: 1rem;
+                            text-align: justify;
+                            -webkit-hyphens: auto;
+                            -moz-hyphens: auto;
+                            hyphens: auto;
+                        }
+
+                        figcaption {
+                            display: flex;
+                            align-items: center;
+
+                            a {
+                                cursor: pointer;
+                                text-decoration: 2px dotted underline $offwhite;
+                                color: black;
+                                margin-left: 3px;
+
+                                &:hover {
+                                    color: $offwhite;
+                                }
+                            }
+
+                            .testimonial-icon {
+                                font-size: 14px;
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+    
+                .projects {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 70%;
+
+                    @include xl {
+                        width: 100%;
+                    }
+
+                    .section-title {
+                        margin: 2rem 0 0 0;
+
+                        @include md {
+                            margin: 2rem 0 2rem 0;
+                        }
+    
+                    }
+
+                    .sh {
+                        font-size: 1.5rem;
+                        font-family: $barlow;
+                        font-weight: 600;
+                        width: 50%;
+
+                        @include xl {
+                            width: 70%;
+                        }
+
+                        @include md {
+                            width: 100%;
+                        }
+
+                        @include xs {
+                            font-size: 1.4rem;
+                        }
+                    }
+
+                    .projects-list {
+                        display: flex;
+                        margin: 3rem 0 0 0;
+
+                        @include md {
+                            flex-direction: column;
+                            margin: 2rem 0 0 0;
+                        }
+
+                        .project {
+                            width: 350px;
+                            height: 250px;
+                            border: 3px solid black;
+                            position: relative;
+                            overflow: hidden;
+                            transition: transform 0.3s, box-shadow 0.3s;
+
+                            @include xl {
+                                width: 375px;
+                            }
+
+                            @include xs {
+                                width: 100%;
+                                height: 275px;
+                            }
+
+                            &:hover {
+                                transform: translateY(-10px);
+                                box-shadow: 0 10px 15px $offwhite;
+                            }
+
+                            &:first-child {
+                                margin-right: 2rem;
+
+                                @include md {
+                                    margin-right: 0rem;
+                                    margin-bottom: 1rem;
+                                }
+                            }
+
+                            .project-bg-image {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-size: cover;
+                                background-position: center;
+                                transition: opacity 0.3s;
+                            }
+
+                            .project-content {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-color: $offwhite;
+                                opacity: 0;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                padding: 20px;
+                                text-align: center;
+                                transition: opacity 0.3s;
+
+                                h3 {
+                                    margin-bottom: 20px;
+                                    font-size: 2.6rem;
+                                    font-family: $anton;
+                                    line-height: 1;
+                                }
+                        
+                                p {
+                                    font-size: 1.5rem;
+                                    font-family: $barlow;
+                                    font-weight: 600;
+                                    color: black;
+                                    margin-bottom: 0.5rem;
+                                }
+
+                                .project-button {
+                                    display: inline-block;
+                                    width: 225px;
+                                    height: 65px;
+                                    border-radius: 0;
+                                    border: 3px solid black;
+                                    font-weight: 500;
+                                    font-size: 28px;
+                                    color: black;
+                                    background: $offwhite;
+                                    box-shadow: 8px 8px 0 0;
+                                    position: relative;
+                                    font-family: $anton;
+                                    cursor: pointer;
+                                    user-select: none;
+                                    -webkit-user-select: none;
+                                    touch-action: manipulation;
+                                    letter-spacing: 1px;
+
+                                    @include xs {
+                                        font-size: 24px;
+                                    }
+                        
+                                    &:hover {
+                                        background: $orange;
+                                    }
+                
+                                    &:active {
+                                        box-shadow: 0px 0px 0px 0px;
+                                        top: 8px;
+                                        left: 8px;
+                                    }
+
+                                    .project-button-icon {
+                                        margin-left: 5px;
+                                    }
+                                }
+                            }
+
+                            &:hover .project-bg-image {
+                                opacity: 0;
+                            }
+                        
+                            &:hover .project-content {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .services {
+            background: $offwhite;
+            padding: 4vmin;
+            border-bottom: 3px solid black;
+
+            .services-main {
+                width: 100%;
+
+                .section-title {
+                    margin: 2rem 0;
+                    text-align: center;
+                }
+
+                .services-container {
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    flex-wrap: wrap;
+
+                    .service {
+                        display: flex;
+                        width: calc(100% / 3);
+                        flex-direction: column;
+                        border: 3px solid black;
+                        margin: 1rem;
+                        background: $orange;
+
+                        @include xxl {
+                            width: 45%;
+                        }
+
+                        @include lg {
+                            width: 70%;
+                        }
+
+                        @include md {
+                            width: 80%;
+                        }
+
+                        @include sm {
+                            width: 90%;
+                        }
+
+                        @include xs {
+                            width: 100%;
+
+                            &::not(:last-child) {
+                                margin: 0 0 40px 0;
+                            }
+                        }
+
+                        .service-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: end;
+                            padding: 1rem;
+
+                            @include xs {
+                                flex-direction: column;
+                                align-items: start;
+                            }
+
+                            .service-title {
+                                display: flex;
+                                font-family: $anton;
+                                font-size: 2rem;
+                                letter-spacing: 1px;
+
+                                @include xs {
+                                    font-size: 2.2rem;
+                                }
+                            }
+
+                            .service-price {
+                                font-size: 1.4rem;
+                                font-family: $barlow;
+                                font-weight: 600;
+                                margin-bottom: 7px;
+                                text-align: end;
+
+                                @include xl {
+                                    width: 30%;
+                                }
+
+                                @include sm {
+                                    width: 30%;
+                                }
+
+                                @include xs {
+                                    text-align: start;
+                                    width: 100%;
+                                }
+                            }
+                        }
+
+                        .service-content {
+                            .service-best-for, .service-description {
+                                font-size: 1.5rem;
+                                font-family: $barlow;
+                                font-weight: 600;
+                                line-height: 1.1;
+
+                                @include xs {
+                                    font-size: 1.4rem;
+                                }
+                            }
+    
+                            .service-best-for {
+                                padding: 1rem;
+                                border-bottom: 3px solid black;
+
+                                span {
+                                    font-weight: 800;
+                                }
+                            }
+
+                            .service-description {
+                                padding: 1rem;
+                            }
+
+                            .pros-cons-table {
+                                display: flex;
+                                flex-direction: column;
+                                border: 3px solid black;
+                                border-radius: 0;
+                                overflow: hidden;
+                                margin: 1rem;
+
+                                @include xl {
+                                    display: none;
+                                }
+                            
+                                .pros-cons-header {
+                                    display: flex;
+                                    background-color: $offwhite;
+                                    border-bottom: 3px solid black;
+                                    font-size: 1.5rem;
+                                    font-family: $barlow;
+                                    text-transform: uppercase;
+                            
+                                    .pros-header, .cons-header {
+                                        flex: 1;
+                                        padding: 10px;
+                                        text-align: center;
+                                        font-weight: bold;
+                                    }
+
+                                    .pros-header {
+                                        border-right: 3px solid black;
+                                    }
+                                }
+                            
+                                .pros-cons-body {
+                                    display: flex;
+                            
+                                    .pros-column, .cons-column {
+                                        flex: 1;
+                                        padding: 10px;
+                                        text-align: center;
+                                        background: $offwhite;
+                            
+                                        ul {
+                                            list-style-type: none;
+                                            padding: 0;
+                                            font-family: $barlow;
+                                            font-weight: 600;
+                                            font-size: 1.4rem;
+                            
+                                            li {
+                                                margin-bottom: 5px;
+                                            }
+                                        }
+                                    }
+
+                                    .pros-column {
+                                        border-right: 3px solid black;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .book-service {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: calc(100% / 3);
+                        margin: 1rem;
+
+                        @include xxl {
+                            width: 45%;
+                        }
+
+                        .service-button {
+                            width: 250px;
+                            min-width: 250px;
+                            height: 250px;
+                            border-radius: 0;
+                            border: 3px solid black;
+                            font-weight: 500;
+                            font-size: 2rem;
+                            color: black;
+                            background: $orange;
+                            box-shadow: 8px 8px 0 0;
+                            position: relative;
+                            font-family: $anton;
+                            cursor: pointer;
+                            user-select: none;
+                            -webkit-user-select: none;
+                            touch-action: manipulation;
+                            letter-spacing: 1px;
+                
+                            &:hover {
+                                background: $offwhite;
+                            }
+        
+                            &:active {
+                                box-shadow: 0px 0px 0px 0px;
+                                top: 8px;
+                                left: 8px;
+                            }
+
+                            svg {
+                                margin-top: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            background: $orange;
+            padding: 4vmin;
+            position: relative;
+
+            @include xs {
+                padding: 6vmin;
+            }
+
+            .copyright {
+                font-family: $barlow;
+                font-weight: 600;
+                font-size: 1.1rem;
+                color: rgba(0,0,0,0.8);
+                position: absolute;
+                bottom: 5px;
+                left: 5px;
+
+                @include xl {
+                    width: 70%;
+                }
+
+                @include xs {
+                    width: 95%;
+                    padding: 0 5px;
+                }
+            }
+
+            .contact-main {
+                width: 100%;
+                display: flex;
+
+                @include lg {
+                    flex-direction: column;
+                }
+
+                .form, .contact-details {
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .form {
+                    width: 40%;
+                    align-items: center;
+                    justify-content: end;
+
+                    @include lg {
+                        width: 100%;
+                        justify-content: start;
+                        padding-top: 3rem;
+                    }
+
+                    @include md {
+                        margin-bottom: 3rem;
+                    }
+
+                    @include sm {
+                        margin-bottom: 6rem;
+                    }
+
+                    @include xs {
+                        margin-bottom: 8rem;
+                    }
+
+                    .contact-form {
+                        font-family: $barlow;
+        
+                        .form-field {
+                            display: flex;
+                            flex-direction: column;
+                            margin-bottom: 20px;
+        
+                            label {
+                                font-size: 1.5rem;
+                                font-weight: 600;
+
+                                @include xs {
+                                    font-size: 1.4rem;
+                                }
+                            }
+
+                            input, textarea {
+                                border: 3px solid black;
+                                width: 300px;
+                                font-size: 1.5rem;
+                                font-family: $barlow;
+
+                                @include xs {
+                                    width: 275px;
+                                    font-size: 1.4rem;
+                                }
+                            }
+        
+                            input {
+                                height: 40px;
+                            }
+        
+                            textarea {
+                                resize: none;
+                            }
+
+                            input:focus, textarea:focus {
+                                box-shadow: 0 0 40px $offwhite;
+                                outline: none;
+                            }
+                        }
+
+                        .form-success, .form-error {
+                            font-size: 1.5rem;
+
+                            @include xs {
+                                font-size: 1.4rem;
+                            }
+                        }
+                        
+                        .submit-button {
+                            width: 210px;
+                            height: 75px;
+                            border-radius: 0;
+                            border: 3px solid black;
+                            font-weight: 500;
+                            font-size: 28px;
+                            color: black;
+                            background: $offwhite;
+                            box-shadow: 8px 8px 0 0;
+                            position: relative;
+                            font-family: $anton;
+                            cursor: pointer;
+                            user-select: none;
+                            -webkit-user-select: none;
+                            touch-action: manipulation;
+                            letter-spacing: 1px;
+                
+                            &:hover {
+                                background: rgba(0,0,0,0);
+                            }
+        
+                            &:active {
+                                box-shadow: 0px 0px 0px 0px;
+                                top: 8px;
+                                left: 8px;
+                            }
+                        }
+                    }
+                }
+
+                .contact-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: space-between;
+                    width: 60%;
+                    flex: 1;
+
+                    @include lg {
+                        width: 100%;
+                        padding-bottom: 3rem;
+                        border-bottom: 3px solid black;
+                    }
+
+                    .section-title {
+                        margin: 2rem 0 1rem 0;
+                    }
+
+                    h3 {
+                        width: 375px;
+                        font-family: $barlow;
+                        font-weight: 600;
+                        font-size: 1.5rem;
+                        line-height: 1.1;
+                        margin-bottom: 2rem;
+
+                        @include lg {
+                            width: 100%;
+                            padding-bottom: 3rem;
+                            border-bottom: 3px solid black;
+                        }
+
+                        @include xs {
+                            font-size: 1.4rem;
+                        }
+                    }
+
+                    h4 {
+                        font-size: 2rem;
+                        font-family: $barlow;
+                        margin-bottom: 1rem;
+                    }
+
+                    .socials {
+                        a {
+                            text-decoration: none;
+                            color: black;
+                            
+                            .social-icon {
+                                font-size: 2rem;
+    
+                                &:first-child {
+                                    margin-right: 1rem;
+                                }
+    
+                                &:hover {
+                                    color: $offwhite;
+                                }
+                            }
+                        }
+                    }
+
+                    .contact-details {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+
+                        .specs {
+                            display: flex;
+                            justify-content: space-between;
+                            flex-wrap: wrap;
+                            margin-bottom: 1.5rem;
+
+                            @include xxl {
+                                flex-direction: column;
+                            }
+
+                            a, p {
+                                font-size: 1.4rem;
+                                font-family: $barlow;
+                                line-height: 1.1;
+                                letter-spacing: 1px;
+                            }
+        
+                            a {
+                                text-decoration: none;
+                                color: black;
+
+                                .hover-white {
+                                    text-decoration: 2px dotted underline $offwhite;
+                                }
+        
+                                .hover-white:hover {
+                                    color: $offwhite;
+                                }
+
+                                .no-hover, .contact-icon {
+                                    cursor: default;
+                                }
+
+                                &:nth-child(1),
+                                &:nth-child(2) {
+                                    margin-bottom: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+}
+
+@media screen and (max-width: 540px) and (min-width: 501px) {
+    .hero {
+        .hero-main {
+            .hero-main-text h2 {
+                font-size: 4.4rem !important;
+            }
+
+            .hero-main-text h3 {
+                font-size: 1.8rem !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) and (min-width: 461px) {
+    .hero {
+        .hero-main {
+            .hero-main-text h2 {
+                font-size: 4.1rem !important;
+            }
+
+            .hero-main-text h3 {
+                font-size: 1.8rem !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 460px) and (min-width: 431px) {
+    .hero {
+        .hero-main {
+            .hero-main-text {
+                min-height: 50%;
+            }
+
+            .hero-main-text h2 {
+                font-size: 3.8rem !important;
+            }
+
+            .hero-main-text h3 {
+                font-size: 1.6rem !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 430px) and (min-width: 401px) {
+    .hero {
+        .hero-main {
+            .hero-main-text h2 {
+                font-size: 3.55rem !important;
+            }
+
+            .hero-main-text h3 {
+                font-size: 1.6rem !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) and (min-width: 355px) {
+    .hero {
+        .hero-main {
+            .hero-main-text {
+                padding-top: 2rem;
+            }
+
+            .hero-main-text h2 {
+                font-size: 3.15rem !important;
+            }
+
+            .hero-main-text h3 {
+                font-size: 1.5rem !important;
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 354px) and (min-width: 320px) {
+    .hero {
+        .hero-main {
+            .hero-main-text {
+                padding-top: 2rem;
+            }
+
+            .hero-main-text h2 {
+                font-size: 2.84rem !important;
+            }
+
+            .hero-main-text h3 {
+                font-size: 1.6rem !important;
+            }
+        }
+    }
+
+    .tech {
+        font-size: 1rem !important;
+    }
+
+    .specs {
+        a, p {
+            font-size: 1.2rem !important;
+        }
+    }
+
+    .testimonial {
+        figcaption {
+            font-size: 1.2rem !important;
+        }
+    }
+}
