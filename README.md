@@ -1,5 +1,4 @@
-HOTKEY CREATIVE
-Doug Kissack
+HOTKEY CREATIVE - Doug Kissack
 
 Overview
 
