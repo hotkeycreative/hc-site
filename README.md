@@ -4,7 +4,7 @@ Overview
 
 This repository contains the source code for Hotkey Creative's primary business website.  Hotkey Creative is a web design and development firm based in Milford, Pennsylvania, USA, and primarily servicing the Pike, Orange, and Sussex County communities in Pennsylvania, New York, and New Jersey.  This website was created using React and Sass and showcases the business and its portfolio of recent work. 
 
-To view this website locally, visit https://hotkeycreative.com/ or clone this repository and run the start script in your code editor of choice. 
+To view this website, visit https://hotkeycreative.com/ or clone this repository and run the start script in your code editor of choice. 
 
 License
 
