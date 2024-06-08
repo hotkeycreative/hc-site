@@ -8,7 +8,7 @@ To view this website, visit https://hotkeycreative.com/ or clone this repository
 
 License
 
-No Rights Reserved. My code is licensed under CC0 1.0 Universal (CC0 1.0) Public Domain Dedication. Please feel free to steal it (the code, not my or my business's identity). 
+My code is licensed under CC0 1.0 Universal (CC0 1.0) Public Domain Dedication. Please feel free to steal it (the code, not my or my business's identity). 
 
 Contact
 
